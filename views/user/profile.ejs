@@ -1,0 +1,100 @@
+
+<%- include('../partials/header') -%>
+<%- include('../partials/navbar') -%>
+<%- include('../partials/flashMessages') -%>      
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <img src="<%= '/images/' + user.avatar%>" height="150px" width="150px" class="avatar"    >
+            <style>
+                .avatar{
+                    border-radius: 50%;                    
+                         }
+            </style>
+            <br> <br>
+            <h2>Hi <%= user.firstName %>!  </h2>
+            <br> 
+            <div class="col-ml-6">
+            <h4> Personal info  </h4>
+            <p>
+                        <div class="container">
+                        <div class="row mt-4">                       
+                        <div class="col-md-9 offset-md-1">
+                        <div class="card">         
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fa fa-id-badge"></i> Name: <%=user.firstName %> <%=user.lastName %></h5>
+                            <hr>
+                            <p class="card-text"><i class="fa fa-mobile"></i> Phone: <%=user.mobile %></p>
+                            <hr>
+                            <p class="card-text"><i class="fa fa-running"></i> Sport: <%=user.sport%></p>
+                            <hr>
+                            <p> <i class="fas fa-location-arrow"></i> City: <%=user.city %></p>
+                            <hr>
+                            <p><i class="fas fa-location-arrow"></i> Location: <%=user.location %></p>
+                            <hr>
+                            <p> <i class="fa fa-envelope"></i> Email : <%=user.email %></p>
+                            <hr>                       
+                                        <button>  <a class="nav-link" href="/users/edit/" >Edit profile</a>    </button> 
+                        </div>
+                        </div>        
+                        </div>
+                        </div>
+                        </div>
+            </p>         
+        </div>
+ 
+           
+        </div>
+    </div>
+</div>
+<br>
+<h2><p class=" text-dark text-center w3-xxlarge ">My events</p></h2>
+<hr>
+<% chunk.forEach((events)=> {%>
+
+    <div class="row mt-3">
+
+   
+        <% events.forEach((event)=> {%>
+        <% if ((user) && (user.id == event.user_id )) {%>
+
+          <div class="col-sm-6 col-md-4">
+              <div class="card">
+                  
+                  <div class="card-body">
+                    <h5 class="card-title"><%= event.title%></h5>
+                    <hr>
+                    <p class="card-text"> <i class="fa fa-running"></i> <%= event.sport%></p>
+                    <p class="card-text"> <i class="fa fa-clock"></i> <%= event.date.toDateString()%> At <%= event.time%> </p>
+                    <p class="card-text"> <i class="fas fa-location-arrow"></i> <%= event.location%></p>
+                    <p class="card-text">Description: <%= event.description%></p>
+                    <a href="<%=  '/events/show/'  + event.id %>" class="btn btn-primary">Show More <i class="fa fa-info-circle"></i>                    </a>
+                    </div>
+                </div>
+          </div>
+          <%}%>
+          <%})%>
+    </div>
+
+  <%})%>
+<div class="row">
+  <div class="col-12 mt-2 mb-4">
+    <nav aria-label="...">
+      <ul class="pagination pagination-lg justify-content-center">
+        <% for (let i=1 ; i <= Math.ceil(total/5); i++) {%>
+        
+          <% if (pageNo == i) {%>
+            <li class="page-item active"><a class="page-link" href="<%= '/events/' + i%>"><%= i%></a></li>
+          <%} else { %>
+          <li class="page-item"><a class="page-link" href="<%= '/events/' + i%>"><%= i%></a></li>
+          <%}%>
+        
+        <%}%>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<%- include('../partials/contact') -%>
+<%- include('../partials/footer') -%>

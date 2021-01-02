@@ -1,0 +1,77 @@
+
+<nav class="navbar navbar-expand-lg fixed-top navbar-collapse bg-light">
+  <a class="navbar-brand" href="/events">        <img  src="images/Asset1.png" width="30" height="30" alt="">  Terra</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarColor01">
+
+              <ul class="navbar-nav ml-auto">
+    
+                  <% if ((user) && (user.role==="author")) { %>
+                    <ul class="navbar-nav mr-auto">
+
+                      <li class="nav-item">
+                        <a class="nav-link"  href="/users/profile"><i class="fa fa-id-card"></i> Profile </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link"  href="/users/userInfo"><i class="fa fa-id-card"></i> People </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="/events"><i class="fa fa-newspaper"></i> Home</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="/events/Create"><i class=" fa fa-calendar-plus"></i> Create </a>
+                      </li>
+                      <li class="nav-item ">
+                        <a class="nav-link" href="/users/signup"><i class="fa fa-user-plus"></i> Add member </a>
+                      </li>
+                    </ul>
+
+                  <li class="nav-item active">
+                    <a class="nav-link" href="/users/logout"><i class="fa fa-sign-out"></i> logout</a>
+                  </li>
+                    <% } else if (user) { %>
+                      <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+              
+                          <a class="nav-link"  href="/users/profile"><i class="fa fa-id-card"></i> Profile </a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"  href="/users/userInfo"><i class="fa fa-id-card"></i> People </a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="/events"><i class="fa fa-newspaper"></i> Home</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="/events/Create"><i class=" fa fa-calendar-plus"></i> Create </a>
+                        </li>
+                      </ul>
+                    <li class="nav-item active">
+                      <a class="nav-link" href="/users/logout"><i class="fa fa-sign-out"></i> logout</a>
+                    </li> 
+                    <% } else { %>
+                      <li class="nav-item">
+                        <a class="nav-link" href="/events"><i class="fa fa-newspaper"></i> Home</a>
+                      </li>
+                      <li class="nav-item ">
+                        <a class="nav-link"  href="/users/login"><i class="fa fa-sign-in"></i> login</a>
+                      </li>  
+                     <%}%>     
+              </ul>
+            </div>
+          </nav>
+
+          <style>
+            div.navbar-collapse ul.navbar-nav li {
+  color: #045023;
+  font-family: "Diavlo Light", Diavlo , sans-serif ;
+  font-size: 13px;
+}
+
+a{
+  color: #067733;
+ 
+}
+          </style>
