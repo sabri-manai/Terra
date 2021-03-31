@@ -1,0 +1,36 @@
+
+<%- include('../partials/header.ejs') -%>
+<%- include('../partials/navbar.ejs') -%>
+<div class="container">
+    
+<div class="row mt-4">
+        
+    <div class="col-md-9 offset-md-1">
+        <div class="card">         
+            <div class="card-body">
+                <h5 class="card-title"><%=article.title %></h5>
+                <hr>
+                <p class="card-text"><%=article.description%></p>
+                <hr>
+                <p class="card-text"><%=article.subject%></p>
+                <hr>
+                <p class="card-text"><%=article.content%></p>
+                <hr>
+                <p><%=article.location%></p>
+                <p><span class="badge badge-secondary"><%=article.date.toDateString()%></span></p>
+                
+                <% if ((user) && (user.id == article.user_id )) {%>
+                <a href="<%= '/articles/edit/' + article.id %>" class="btn btn-primary">Edit article</a>
+                <a href="<%= '/articles/delete/' + article.id %>" onclick="return confirm('Are you sure to delete this record ?');">  <i  class="fa fa-trash fa-lg" aria-hidden="true"></i></a>
+                <%}%>
+
+            </div>
+        </div>
+        
+    </div>
+
+</div>
+
+</div>
+
+<%- include('../partials/footer.ejs') -%>

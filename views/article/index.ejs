@@ -1,0 +1,56 @@
+<%- include('../partials/header') -%>
+<%- include('../partials/navbar') -%>
+<%- include('../partials/carrousel') -%>
+
+<%- include('../partials/flashMessages') -%>
+<br>
+ <div style="padding-right: 30px; padding-left: 30px;">
+  <% chunk.forEach((articles)=> {%>
+    <div class="row mt-3">
+
+   
+        <% articles.forEach((article)=> {%>
+          
+
+
+          <div class="col-sm-6 col-md-4">
+              <div class="card">
+                  
+                  <div class="card-body">
+                    <h5 style=" color: #CF9817;  font-family: Diavlo Light , Diavlo , sans-serif ;  " class="card-title"><%= article.title%></h5>
+                    <hr>
+                    <p class="card-text"> <i class="fa fa-running"></i> <%= article.subject%></p>
+                    <p class="card-text"> <i class="fa fa-running"></i> <%= article.description%></p>
+                    <p class="card-text"> <i class="fa fa-clock"></i> <%= article.date.toDateString()%> </p>
+                    <p class="card-text"> <i class="fas fa-location-arrow"></i> <%= article.location%></p>
+                    <a href="<%=  '/articles/show/'  + article.id %>" class="btn btn-outline-warning">Show More <i class="fa fa-info-circle"></i>                    </a>
+                    </div>
+                </div>
+          </div>
+          <%})%>
+    </div>
+  <%})%>
+</div>
+
+<div class="row">
+  <div class="col-12 mt-2 mb-4">
+    <nav aria-label="...">
+      <ul class="pagination pagination-lg justify-content-center">
+        <% for (let i=1 ; i <= Math.ceil(total/5); i++) {%>
+        
+          <% if (pageNo == i) {%>
+            <li class="page-item active"><a  class="btn btn-warning" class="page-link" href="<%= '/articles/' + i%>"><%= i%></a></li>
+          <%} else { %>
+          <li class="page-item"><a  class="btn btn-warning" class="page-link" href="<%= '/articles/' + i%>"><%= i%></a></li>
+          <%}%>
+        
+        <%}%>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<%- include('../partials/contact') -%>
+<%- include('../partials/footer') -%>
+

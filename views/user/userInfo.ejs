@@ -4,19 +4,8 @@
 </header>
 
 <div class="row text-center" style="display:flex; flex-wrap: wrap;">
-    <div class="col-md-12">
 
-        <!-- <p>
-           <form action="/user/userInfo" method="GET" class="form-inline">
-               <div class="form-group">
-                   <input type="text" name="search" placeholder="User search..." class="form-control">
-                    <input type="submit" value="Search"  class="btn btn-default"> <i class="fab fa-searchengin"></i> 
-               </div>
-           </form>
-       </p> -->
-    </div>
    <% users.forEach(function(user){ %>
-    <% if (user.sprot === users.sprot) {%>
        <div class="col-md-3 col-sm-6">
            <div class="thumbnail">
               <img src="<%= user.image %>">
@@ -26,7 +15,6 @@
                   <h6><%= user.location %></h6>
                   <h6><%= user.mobile %></h6>
                   <h6><%= user.email %></h6>
-                  <a href="<%=  '/users/showUser/'  + user.id %>" class="btn btn-primary">Show More <i class="fa fa-info-circle"></i>                    </a>
 
                 <style>
                     .avatar{
@@ -37,7 +25,6 @@
             </div>
             </div>
        </div>
-       <% } %>
        <% }); %>
 </div>
 </div>

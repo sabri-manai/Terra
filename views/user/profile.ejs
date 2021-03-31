@@ -1,28 +1,29 @@
 
 <%- include('../partials/header') -%>
 <%- include('../partials/navbar') -%>
-<%- include('../partials/flashMessages') -%>      
-<div class="container">
+<%- include('../partials/flashMessages') -%>   
+<div class="container ">
     <div class="row mt-4">
         <div class="col-md-6">
-            <img src="<%= '/images/' + user.avatar%>" height="150px" width="150px" class="avatar"    >
-            <style>
+          <div style="padding-left: 150px;">
+            <img  src="<%= '/images/' + user.avatar%>" height="150px" width="150px" class="avatar"    >
+          </div> 
+           <style>
                 .avatar{
                     border-radius: 50%;                    
                          }
             </style>
-            <br> <br>
             <h2>Hi <%= user.firstName %>!  </h2>
             <br> 
             <div class="col-ml-6">
-            <h4> Personal info  </h4>
+            <!-- <h4 style=" color: #026633;  font-family: Diavlo Light , Diavlo , sans-serif; padding-left: 150px;"> Personal info  </h4> -->
             <p>
                         <div class="container">
                         <div class="row mt-4">                       
                         <div class="col-md-9 offset-md-1">
                         <div class="card">         
                         <div class="card-body">
-                            <h5 class="card-title"><i class="fa fa-id-badge"></i> Name: <%=user.firstName %> <%=user.lastName %></h5>
+                            <h5 style=" color: #CF9817;  font-family: Diavlo Light , Diavlo , sans-serif ;  " class="card-title"><i class="fa fa-id-badge"></i> Name: <%=user.firstName %> <%=user.lastName %></h5>
                             <hr>
                             <p class="card-text"><i class="fa fa-mobile"></i> Phone: <%=user.mobile %></p>
                             <hr>
@@ -34,7 +35,7 @@
                             <hr>
                             <p> <i class="fa fa-envelope"></i> Email : <%=user.email %></p>
                             <hr>                       
-                                        <button>  <a class="nav-link" href="/users/edit/" >Edit profile</a>    </button> 
+                                  <a  class="btn btn-outline-warning " class="nav-link" href="/users/edit/" >Edit profile</a>    
                         </div>
                         </div>        
                         </div>
@@ -42,41 +43,39 @@
                         </div>
             </p>         
         </div>
- 
-           
+        </div>
         </div>
     </div>
-</div>
 <br>
-<h2><p class=" text-dark text-center w3-xxlarge ">My events</p></h2>
+<h4 style=" color: #CF9817;  font-family: Diavlo Light , Diavlo , sans-serif; text-align: center;" > My articles</h4>
 <hr>
-<% chunk.forEach((events)=> {%>
-
+<div style="padding-right: 30px; padding-left: 30px;">
+  <% chunk.forEach((articles)=> {%>
     <div class="row mt-3">
 
    
-        <% events.forEach((event)=> {%>
-        <% if ((user) && (user.id == event.user_id )) {%>
+        <% articles.forEach((article)=> {%>
+          
+
 
           <div class="col-sm-6 col-md-4">
               <div class="card">
                   
                   <div class="card-body">
-                    <h5 class="card-title"><%= event.title%></h5>
+                    <h5 style=" color: #CF9817;  font-family: Diavlo Light , Diavlo , sans-serif ;  " class="card-title"><%= article.title%></h5>
                     <hr>
-                    <p class="card-text"> <i class="fa fa-running"></i> <%= event.sport%></p>
-                    <p class="card-text"> <i class="fa fa-clock"></i> <%= event.date.toDateString()%> At <%= event.time%> </p>
-                    <p class="card-text"> <i class="fas fa-location-arrow"></i> <%= event.location%></p>
-                    <p class="card-text">Description: <%= event.description%></p>
-                    <a href="<%=  '/events/show/'  + event.id %>" class="btn btn-primary">Show More <i class="fa fa-info-circle"></i>                    </a>
+                    <p class="card-text"> <i class="fa fa-running"></i> <%= article.subject%></p>
+                    <p class="card-text"> <i class="fa fa-running"></i> <%= article.description%></p>
+                    <p class="card-text"> <i class="fa fa-clock"></i> <%= article.date.toDateString()%> </p>
+                    <p class="card-text"> <i class="fas fa-location-arrow"></i> <%= article.location%></p>
+                    <a href="<%=  '/articles/show/'  + article.id %>" class="btn btn-outline-warning">Show More <i class="fa fa-info-circle"></i>                    </a>
                     </div>
                 </div>
           </div>
-          <%}%>
           <%})%>
     </div>
-
   <%})%>
+</div>
 <div class="row">
   <div class="col-12 mt-2 mb-4">
     <nav aria-label="...">
@@ -84,9 +83,9 @@
         <% for (let i=1 ; i <= Math.ceil(total/5); i++) {%>
         
           <% if (pageNo == i) {%>
-            <li class="page-item active"><a class="page-link" href="<%= '/events/' + i%>"><%= i%></a></li>
+            <li class="page-item active"><a  class="btn btn-warning" class="page-link" href="<%= '/articles/' + i%>"><%= i%></a></li>
           <%} else { %>
-          <li class="page-item"><a class="page-link" href="<%= '/events/' + i%>"><%= i%></a></li>
+          <li class="page-item"><a  class="btn btn-warning" class="page-link" href="<%= '/articles/' + i%>"><%= i%></a></li>
           <%}%>
         
         <%}%>

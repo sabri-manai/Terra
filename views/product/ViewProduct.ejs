@@ -1,0 +1,47 @@
+<%- include('../partials/header') -%>
+<%- include('../partials/navbar') -%>
+<%- include('../partials/flashMessages') -%>      
+</header>
+
+<div class="row text-center" style="display:flex; flex-wrap: wrap;">
+    <% products.forEach(function(product){ %>
+    <div style="padding-left: 73px; padding-bottom: 40px;">
+    <div class="row mt-3">
+       <div class="col-md-3 col-sm-6">
+           <div class="thumbnail">
+              <div class="caption">
+                <!-- <img  src="images/profile.png" height="150px" width="150px" class="avatar"   >
+                  <h4><%= product.productName %></h4>
+                  <h6><%= product.productId %></h6>
+                  <h6><%= product.price %></h6>
+                  <h6><%= product.productDescription %></h6>
+
+                <style>
+                    .avatar{
+                        border-radius: 50%
+                    }
+                </style> -->
+                <div class="container">
+                    <h2>Card Image</h2>
+                    <div class="card" style="width:400px">
+                     <img  src="images/profile.png" height="150px" width="399px"    >
+                      <div class="card-body">
+                        <h4 class="card-title"><%= product.productName %></h4>
+                        <h6><%= product.productDescription %></h6>
+                        <h6 class="card-text"><%= product.price %></h6>
+                        <p class="card-text"><%= product.productId %></p>
+                        <a href="<%=  '/products/showProduct/'  + product.id %>" class="btn btn-outline-warning">Show More <i class="fa fa-info-circle"></i>                    </a>
+                      </div>
+                    </div>
+            </div>
+            </div>
+        </div>
+       </div>
+    </div>
+</div>
+       <% }); %>
+</div>
+<% include ../partials/footer %>
+
+<%- include('../partials/contact') -%>
+<%- include('../partials/footer') -%>

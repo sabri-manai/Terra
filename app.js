@@ -37,15 +37,21 @@ app.get('*', (req,res,next)=> {
 
 app.get('/', (req,res)=> {
 
-   res.redirect('/events')
+   res.redirect('/articles')
     
 })
 
-const events = require('./routes/event-routes')
-app.use('/events', events)
+const articles = require('./routes/article-routes')
+app.use('/articles', articles)
+
+const suppliers = require('./routes/supplier-routes')
+app.use('/suppliers', suppliers)
 
 const users = require('./routes/user-routes')
 app.use('/users', users)
+
+const products = require('./routes/product-routes')
+app.use('/products', products)
 
 
 app.listen(5000, ()=> {

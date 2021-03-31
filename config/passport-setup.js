@@ -38,7 +38,7 @@ passport.use('local.signup', new localStrategy({
                 newUser.firstName = req.body.firstName
                 newUser.lastName = req.body.lastName
                 newUser.dateOfBirth = req.body.dateOfBirth
-                newUser.location = req.body.location
+                newUser.position = req.body.position
                 newUser.city = req.body.city
                 newUser.mobile = req.body.mobile
 

@@ -1,0 +1,34 @@
+
+<%- include('../partials/header.ejs') -%>
+<%- include('../partials/navbar.ejs') -%>
+<div class="container">
+    
+<div class="row mt-4">
+        
+    <div class="col-md-9 offset-md-1">
+        <div class="card">         
+            <div class="card-body">
+                <h5 class="card-title"><%= supplier.name %></h5>
+                <hr>
+                <p class="card-text"><%= supplier.productName %></p>
+                <hr>
+                <p class="card-text"><%= supplier.price %></p>
+                <hr>
+                <p class="card-text"><%= supplier.email %></p>
+                <hr>
+                <p><%= supplier.mobile %></p>                
+                <% if ((user) && (user.role==="author")) {%>
+                <a href="<%= '/suppliers/editSupplier/' + supplier.id %>" class="btn btn-outline-warning">Edit supplier</a>
+                <a href="<%= '/suppliers/delete/' + supplier.id %>" onclick="return confirm('Are you sure to delete this record ?');">  <i  class="fa fa-trash fa-lg" aria-hidden="true"></i></a>
+                <%}%>
+
+            </div>
+        </div>
+        
+    </div>
+
+</div>
+
+</div>
+
+<%- include('../partials/footer.ejs') -%>

@@ -1,0 +1,34 @@
+<%- include('../partials/header') -%>
+<%- include('../partials/navbar') -%>
+<%- include('../partials/flashMessages') -%>      
+</header>
+
+<div class="row text-center" style="display:flex; flex-wrap: wrap;">
+
+   <% suppliers.forEach(function(supplier){ %>
+       <div class="col-md-3 col-sm-6">
+           <div class="thumbnail">
+              <div class="caption">
+                <img  src="images/profile.png" height="150px" width="150px" class="avatar"   >
+                  <h4><%= supplier.name %></h4>
+                  <h6><%= supplier.productName %></h6>
+                  <h6><%= supplier.price %></h6>
+                  <h6><%= supplier.email %></h6>
+                  <h6><%= supplier.mobile %></h6>
+                  <a href="<%=  '/suppliers/showSupplier/'  + supplier.id %>" class="btn btn-outline-warning">Show More <i class="fa fa-info-circle"></i>       </a>
+                <style>
+                    .avatar{
+                        border-radius: 50%
+                    }
+                </style>
+
+            </div>
+            </div>
+       </div>
+       <% }); %>
+</div>
+</div>
+<% include ../partials/footer %>
+
+<%- include('../partials/contact') -%>
+<%- include('../partials/footer') -%>

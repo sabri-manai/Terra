@@ -26,7 +26,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    location: {
+    position: {
         type: String,
         required: true
     },
@@ -39,9 +39,6 @@ const userSchema = new mongoose.Schema({
         required: true
     },
  
-    eventsDate : {
-        type: Date,
-    },
 
     role: {type: String, default: "member"},
 

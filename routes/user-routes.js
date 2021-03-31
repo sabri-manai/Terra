@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const User = require('../models/User')
-const Event = require('../models/Event')
+const Article = require('../models/Article')
 
 const passport = require('passport')
 const multer = require("multer")
@@ -25,8 +25,8 @@ isAuthenticated = (req,res,next) => {
     res.redirect('/users/login')
 }
 //  login user view 
-router.get('/login', (req,res)=> {
-    res.render('user/login', {
+router.get('/login', (req,res,)=> {
+    return res.render('user/login', {
         error: req.flash('error')
     })
 })
@@ -151,74 +151,7 @@ router.post('/edit', (req,res)=> {
 
 
 
-router.get('/showUser/:id/:pageNo?', (req,res)=> {   
 
-
-    User.findOne({_id: req.params.id}, (err, user)=> {
-        
-let pageNo = 1
-
-    if ( req.params.pageNo) {
-        pageNo = parseInt(req.params.pageNo)
-    }
-    if (req.params.pageNo == 0)   {
-        pageNo = 1
-    }
-    
-    let q = {
-        skip: 5 * (pageNo - 1),
-        limit: 5
-    }
-    let totalDocs = 0 
-
-    Event.countDocuments({}, (err,total)=> {
-
-    }).then( (response)=> {
-        totalDocs = parseInt(response)
-        Event.find({},{},q, (err,events)=> {
-                 let chunk = []
-                 let chunkSize = 3
-                 for (let i =0 ; i < events.length ; i+=chunkSize) {
-                     chunk.push(events.slice( i, chunkSize + i))
-                 }
-                  res.render('user/showUser', {
-                      chunk : chunk,
-                      message: req.flash('info'),
-                      total: parseInt(totalDocs),
-                      pageNo: pageNo
-                  })
-             })
-    })
-
-
-
-       if(!err) {
-        Event.find() 
-        .then ((docs) => {
-    
-    
-     res.render('user/showUser', {
-         errors: req.flash('errors'),
-         event: docs,
-         user: user,
-         
-         chunk : chunk,
-         message: req.flash('info'),
-         total: parseInt(totalDocs),
-         pageNo: pageNo
-    
-     });
-    }).catch(err => console.log('Error in retriving games list'));
-           
-        // res.render('user/showUser', {
-        //     user: user
-        // })
-
-       } else {
-           console.log(err)
-       }
-    })  
-})
 
 
 
@@ -241,15 +174,15 @@ router.get('/profile/:pageNo?', isAuthenticated, (req,res)=> {
     }
     let totalDocs = 0 
 
-    Event.countDocuments({}, (err,total)=> {
+    Article.countDocuments({}, (err,total)=> {
 
     }).then( (response)=> {
         totalDocs = parseInt(response)
-        Event.find({},{},q, (err,events)=> {
+        Article.find({},{},q, (err,articles)=> {
                  let chunk = []
                  let chunkSize = 3
-                 for (let i =0 ; i < events.length ; i+=chunkSize) {
-                     chunk.push(events.slice( i, chunkSize + i))
+                 for (let i =0 ; i < articles.length ; i+=chunkSize) {
+                     chunk.push(articles.slice( i, chunkSize + i))
                  }
                   res.render('user/profile', {
                       chunk : chunk,
@@ -259,8 +192,6 @@ router.get('/profile/:pageNo?', isAuthenticated, (req,res)=> {
                   })
              })
     })
-
-  
 })
 
 
