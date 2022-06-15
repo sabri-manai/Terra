@@ -54,7 +54,6 @@ const products = require('./routes/product-routes')
 app.use('/products', products)
 
 
-app.listen(5000, ()=> {
-
-    console.log(' app is wokring on port 5000')
-})
+app.listen(process.env.PORT || 3000, function(){
+  console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+});
